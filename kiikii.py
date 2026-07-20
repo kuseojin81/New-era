@@ -18,8 +18,9 @@ with col1:
         st.session_state.end_time = 0          # 종료 시간 초기화
 with col2:
     if st.button("종료"):
-        if st.session_state.start_time != 0:
+        if st.session_state.start_time != 0 and st.session_state.end_time == 0:
             st.session_state.end_time = time.time()
+            st.session_state.result + (st.session_state.end_time - st.session_state.start_time)
             # 걸린 시간 계산 (종료 시간 - 시작 시간)
             st.session_state.result = st.session_state.end_time - st.session_state.start_time
         else:
@@ -31,9 +32,10 @@ if st.session_state.end_time != 0:
     # 성공 판정 (9.7초 ~ 10.3초 사이)
     if 9.7 <= diff <= 10.3:
         st.success("대단해요! 정확합니다!")
-        del = button("종료") 
+        
+    
     else:
         st.error(f"10초와 {abs(10-diff):.2f}초 차이가 납니다. 다시 도전해보세요!")
-        del = button("종료") del
+        
 
 st.button("다시 하기", on_click=reset_game)
