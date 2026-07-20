@@ -36,4 +36,3 @@ if st.session_state.end_time != 0:
 
 
 st.button("다시 하기", on_click=reset_game)
-st.button("전체 초기화", on_click=reset_all)
