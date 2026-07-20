@@ -20,7 +20,7 @@ with col2:
     if st.button("종료"):
         if st.session_state.start_time != 0 and st.session_state.end_time == 0:
             st.session_state.end_time = time.time()
-            st.session_state.result + (st.session_state.end_time - st.session_state.start_time)
+        
             # 걸린 시간 계산 (종료 시간 - 시작 시간)
             st.session_state.result = st.session_state.end_time - st.session_state.start_time
         else:
