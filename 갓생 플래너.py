@@ -79,12 +79,11 @@ def page_report():
 
 def page_ai_coach():
     st.header("🤖 AI 코치와 대화하기")
-    prompt = st.text_input("질문을입력하세요")
-    if st. button("보내기"):
-        response = ai_client.responses.create(
-            model="gpt-5.4-mini",
-            input=prompt)
-        st.write(response.output_text)
+   if "messages" not in st.session_state:
+      st.session_state.messages = [
+        {"role", "system", "content": "너는 사용자의 할일 목록과 달성 정도를 분석하여 
+         조언하는 열정적인 코치야. 사용자가 더 멋진 삶을 살 수 있도록 명확한 조언과 응원해줘."}]  
+     
 pg = st.navigation([
     st.Page(page_motto, title="오늘의 다짐", icon="📣"),
     st.Page(page_todo, title="오늘의 할 일", icon="✅"),
