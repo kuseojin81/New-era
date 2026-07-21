@@ -65,3 +65,19 @@ with st.expander("AI에게 더 질문하기"):
         )
 
         st.write(response.choices[0].message.content)
+if st.button("퀴즈 풀기"):
+
+    prompt = f"""
+    {chemical}에 관한 객관식 퀴즈를 하나 만들어줘.
+
+    정답도 마지막에 알려줘.
+    """
+
+    response = ai_client.chat.completions.create(
+        model="gpt-5.4-mini",
+        messages=[
+            {"role":"user","content":prompt}
+        ]
+    )
+
+    st.write(response.choices[0].message.content)
