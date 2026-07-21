@@ -15,7 +15,7 @@ def page_search():
     if st.button("검색"):
         url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{name}/property/MolecularFormula,MolecularWeight,IUPACName/JSON"
         response = requests.get(url)
-        if response.status_code == 200
+        if response.status_code == 200:
             data = response.json()
             st.session_state.chemical = data["PropertyTable"]["Properties"][0]
             st.success("검색 완료!")
