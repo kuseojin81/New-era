@@ -11,10 +11,8 @@ st.title("🧪 AI 화학 물질 설명기")
 
 # 화학 물질 선택
 chemical = st.selectbox(
-    "화학 물질을 선택하세요.",
-    ["물", "에탄올", "아세톤", "포도당", "암모니아"],
-    key="chemical"
-)
+    "화학 물질을 선택하세요.", ["물", "에탄올", "아세톤", "포도당", "암모니아"], key="chemical")
+
 
 # AI 설명
 if st.button("AI 설명 보기"):
@@ -31,14 +29,8 @@ if st.button("AI 설명 보기"):
 
     response = ai_client.chat.completions.create(
         model="gpt-5.4-mini",
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ]
-    )
-
+        messages=[{"role": "user", "content": prompt}])
+           
     with st.container(border=True):
         st.subheader(f"🧪 {chemical}")
         st.write(response.choices[0].message.content)
@@ -52,17 +44,8 @@ with st.expander("AI에게 더 질문하기"):
 
         response = ai_client.chat.completions.create(
             model="gpt-5.4-mini",
-            messages=[
-                {
-                    "role": "system",
-                    "content": "너는 친절한 화학 선생님이다."
-                },
-                {
-                    "role": "user",
-                    "content": f"{chemical}에 대해 질문: {question}"
-                }
-            ]
-        )
+            messages=[{"role": "system", "content": "너는 친절한 화학 선생님이다."}, {"role": "user","content": f"{chemical}에 대해 질문: {question}"}])
+          
 
         st.write(response.choices[0].message.content)
 st.markdown("---")
@@ -88,11 +71,8 @@ if st.button("퀴즈 만들기"):
 
     response = ai_client.chat.completions.create(
         model="gpt-5.4-mini",
-        messages=[
-            {"role":"user","content":prompt}
-        ]
-    )
-
+        messages=[{"role":"user","content":prompt}])
+            
     quiz = response.choices[0].message.content
 
     st.session_state.quiz = quiz
@@ -102,10 +82,7 @@ if "quiz" in st.session_state:
 
     st.write(st.session_state.quiz.split("정답:")[0])
 
-    answer = st.radio(
-        "정답을 선택하세요.",
-        ["①", "②", "③", "④"]
-    )
+    answer = st.radio("정답을 선택하세요.", ["①", "②", "③", "④"])
 
     if st.button("채점하기"):
 
