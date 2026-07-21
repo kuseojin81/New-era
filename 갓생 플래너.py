@@ -80,7 +80,7 @@ def page_report():
 def page_ai_coach():
     st.header("🤖 AI 코치와 대화하기")
     prompt = st.text_input("질문을 입력하세요")
-    if st.button("qhsorl"):
+    if st.button("보내기"):
         response = ai_client.responses.create(
             model="gpt-5.4-mini",
             input=prompt
