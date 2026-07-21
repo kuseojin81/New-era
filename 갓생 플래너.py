@@ -65,5 +65,5 @@ pg = st.navigation([
     st.page(page_todo, title="오늘의할일"),
     st.page(page_report, title="나의 갓생 지수")])
 
-    st.title("갓생 살기 플래너")
-    pg.run()
+st.title("갓생 살기 플래너")
+pg.run()
