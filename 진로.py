@@ -11,13 +11,9 @@ if "chemical" not in st.session_state:
 def page_search():
 
     st.header("🧪 화학 물질 검색")
-
     name = st.text_input("영어로 물질 이름을 입력하세요")
-
     if st.button("검색"):
-
         url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{name}/property/MolecularFormula,MolecularWeight,IUPACName/JSON"
-
         response = requests.get(url)
 
         if response.status_code == 200:
@@ -69,12 +65,10 @@ def page_ai():
             response = ai_client.chat.completions.create(
                 model="gpt-5.4-mini",
                 messages=[
-                    {"role":"user","content":prompt}
-                ]
-            )
-
+                    {"role":"user","content":prompt}])
+           
             st.write(response.choices[0].message.content)
-
+            
 # AI 질문
 def page_chat():
 
@@ -91,18 +85,7 @@ def page_chat():
 
             response = ai_client.chat.completions.create(
                 model="gpt-5.4-mini",
-                messages=[
-                    {
-                        "role":"system",
-                        "content":"너는 친절한 화학 선생님이다."
-                    },
-                    {
-                        "role":"user",
-                        "content":question
-                    }
-                ]
-            )
-
+                messages=[{"role":"system","content":"너는 친절한 화학 선생님이다."}, {"role":"user","content":question}])
             st.write(response.choices[0].message.content)
 
 pg = st.navigation([
