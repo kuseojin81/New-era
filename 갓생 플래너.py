@@ -82,7 +82,7 @@ def page_ai_coach():
     prompt = st.text_input("질문을 입력하세요")
     if st.button("qhsorl"):
         response = ai_client.responses.create(
-            model="gpt-5.4-mini,
+            model="gpt-5.4-mini",
             input=prompt
         )
         st.write(response.output_text)
