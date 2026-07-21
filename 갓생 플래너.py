@@ -55,7 +55,7 @@ def page3():
                 count += 1
         progress = (count / total) * 100
         st.metric("오늘의 달성률", f"{progress:.1f}%")
-     st.progress(progress / 100)
+        st.progress(progress / 100)
         if st.button("기록 전체 초기화"):
             st.session_state.todo_list = []
             st.rerun()
