@@ -21,12 +21,13 @@ def edit_motto():
         st.rerun()
         
 def page_motto():
-    st.title("🌱 갓생 살기 플래너")
     st.header("📣 1. 오늘의 다짐")
-    motto = st.text_input("나의 한 줄 좌우명을 적어주세요")
-    if st.button("다짐 저장"):
-        st.session_state.user_motto = motto
-        st.success("좌우명이 등록되었습니다!")
+    st.info(f"현재 다짐: {st.session_state.user_motto}")
+    if st.button("다짐 수정하기"):
+        edit_motto()
+    if st.session_state.motto_updated:
+        st.success("새로운 좌우명이 등록되었습니다!")
+        st.session_state.motto_updated = False
     st.markdown("---")
 
 def page_todo():
